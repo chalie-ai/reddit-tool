@@ -1,0 +1,97 @@
+{
+  "name": "reddit",
+  "version": "1.0",
+  "description": "Search Reddit for community discussions, opinions, recommendations, and troubleshooting. Returns top posts and comments from relevant subreddits with engagement signals. No API key required — uses Reddit's public JSON API.",
+  "documentation": "Searches Reddit for community discussions, product reviews, recommendations, troubleshooting advice, and trending topics. Uses Reddit's public JSON endpoints (no API key, no OAuth). Returns post titles, scores, comment counts, subreddit, author, and top comments. Common triggers: 'what do people think about...', 'reddit opinions on...', 'recommendations for...', 'has anyone tried...', 'best X for Y', 'reviews of...', 'what's trending on reddit', 'discussions about...'. Supports targeted subreddit search via the subreddit parameter (e.g., 'technology', 'movies', 'cooking'). When no subreddit is specified, searches across all of Reddit. Sort options: 'relevance' (default), 'hot', 'top', 'new', 'comments'. Time filters for 'top' sort: 'day', 'week', 'month', 'year', 'all'. Engagement signals (upvote ratio, comment count, awards) indicate community consensus strength. For factual/encyclopedic knowledge prefer wikipedia. For current news prefer news_tool. Reddit excels at: real user experiences, product comparisons, niche expertise, community consensus, troubleshooting threads, subjective recommendations.",
+  "category": "research",
+  "icon": "fa-brands fa-reddit",
+  "trigger": {
+    "type": "on_demand",
+    "description": "Initiated by Chalie when community opinions, recommendations, discussions, or real user experiences are needed"
+  },
+
+  "parameters": {
+    "query": {
+      "type": "string",
+      "required": true,
+      "description": "Search query — what to look for on Reddit (e.g., 'best noise cancelling headphones 2026', 'is Rust worth learning')"
+    },
+    "subreddit": {
+      "type": "string",
+      "required": false,
+      "description": "Target subreddit name without r/ prefix (e.g., 'technology', 'movies', 'askreddit'). Omit to search all of Reddit."
+    },
+    "sort": {
+      "type": "string",
+      "required": false,
+      "default": "relevance",
+      "description": "Sort order: 'relevance' (default), 'hot', 'top', 'new', 'comments'"
+    },
+    "time_filter": {
+      "type": "string",
+      "required": false,
+      "default": "month",
+      "description": "Time range for 'top' and 'relevance' sort: 'day', 'week', 'month' (default), 'year', 'all'"
+    },
+    "limit": {
+      "type": "integer",
+      "required": false,
+      "default": 5,
+      "description": "Number of posts to return (1-8). Capped at 8 to avoid cognitive overload."
+    },
+    "include_comments": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Whether to fetch top comments for each post. Adds latency but provides richer context."
+    }
+  },
+
+  "returns": {
+    "results": {
+      "type": "array",
+      "description": "List of {title, subreddit, author, score, upvote_ratio, num_comments, url, permalink, selftext, created_utc, top_comments: [{author, body, score}]}"
+    },
+    "count": {
+      "type": "integer",
+      "description": "Number of posts returned"
+    },
+    "query": {
+      "type": "string",
+      "description": "The search query used"
+    },
+    "_meta": {
+      "type": "object",
+      "description": "Observability metadata: fetch_latency_ms, post_count_raw, subreddit_searched, sort, time_filter"
+    }
+  },
+
+  "constraints": {
+    "timeout_seconds": 15
+  },
+
+  "config_schema": {},
+
+  "tips": [
+    "Use for real user opinions, product reviews, recommendations, and troubleshooting — Reddit excels at subjective, experience-based knowledge",
+    "Set subreddit to target specific communities (e.g., subreddit='buildapc' for PC building advice)",
+    "Use sort='top' with time_filter='month' to find well-established consensus",
+    "Use sort='new' to find the most recent discussions on a topic",
+    "High upvote_ratio (>0.90) with high score indicates strong community agreement",
+    "Posts with many comments but low score often indicate controversial or divisive topics",
+    "Pair with web_read to get full thread content when the preview is insufficient",
+    "For product recommendations, search with 'best' or 'vs' in the query for comparison threads",
+    "Use memorize to persist key community insights as facts"
+  ],
+
+  "output": {
+    "synthesize": true,
+    "card": {
+      "enabled": true,
+      "mode": "immediate",
+      "title": "Reddit",
+      "accent_color": "#FF4500",
+      "background_color": "rgba(255, 69, 0, 0.06)"
+    }
+  }
+}
