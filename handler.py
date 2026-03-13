@@ -13,7 +13,7 @@ import requests
 logger = logging.getLogger(__name__)
 
 _REDDIT_BASE = "https://www.reddit.com"
-_VALID_SORTS = {"relevance", "hot", "top", "new", "comments"}
+_VALID_SORTS = {"relevance", "hot", "top", "new"}
 _VALID_TIME_FILTERS = {"day", "week", "month", "year", "all"}
 _USER_AGENT = "Chalie/1.0 (community data aggregator; contact: opensource)"
 
@@ -27,7 +27,7 @@ def execute(topic: str, params: dict, config: dict = None, telemetry: dict = Non
         params: Tool parameters from manifest:
             - query (str, required): Search terms
             - subreddit (str, optional): Target subreddit (without r/ prefix)
-            - sort (str, optional): 'relevance', 'hot', 'top', 'new', 'comments'
+            - sort (str, optional): 'relevance', 'hot', 'top', 'new'
             - time_filter (str, optional): 'day', 'week', 'month', 'year', 'all'
             - limit (int, optional): Number of posts (1-8, default 5)
             - include_comments (bool, optional): Fetch top comments per post (default True)

@@ -2,7 +2,7 @@
   "name": "reddit",
   "version": "1.0",
   "description": "Search Reddit for community discussions, opinions, recommendations, and troubleshooting. Returns top posts and comments from relevant subreddits with engagement signals. No API key required — uses Reddit's public JSON API.",
-  "documentation": "Searches Reddit for community discussions, product reviews, recommendations, troubleshooting advice, and trending topics. Uses Reddit's public JSON endpoints (no API key, no OAuth). Returns post titles, scores, comment counts, subreddit, author, and top comments. Common triggers: 'what do people think about...', 'reddit opinions on...', 'recommendations for...', 'has anyone tried...', 'best X for Y', 'reviews of...', 'what's trending on reddit', 'discussions about...'. Supports targeted subreddit search via the subreddit parameter (e.g., 'technology', 'movies', 'cooking'). When no subreddit is specified, searches across all of Reddit. Sort options: 'relevance' (default), 'hot', 'top', 'new', 'comments'. Time filters for 'top' sort: 'day', 'week', 'month', 'year', 'all'. Engagement signals (upvote ratio, comment count, awards) indicate community consensus strength. For factual/encyclopedic knowledge prefer wikipedia. For current news prefer news_tool. Reddit excels at: real user experiences, product comparisons, niche expertise, community consensus, troubleshooting threads, subjective recommendations.",
+  "documentation": "Searches Reddit for community discussions, product reviews, recommendations, troubleshooting advice, and trending topics. Uses Reddit's public JSON endpoints (no API key, no OAuth). Returns post titles, scores, comment counts, subreddit, author, and top comments. Common triggers: 'what do people think about...', 'reddit opinions on...', 'recommendations for...', 'has anyone tried...', 'best X for Y', 'reviews of...', 'what's trending on reddit', 'discussions about...'. Supports targeted subreddit search via the subreddit parameter (e.g., 'technology', 'movies', 'cooking'). When no subreddit is specified, searches across all of Reddit. Sort options: 'relevance' (default), 'hot', 'top', 'new'. Time filters for 'top' sort: 'day', 'week', 'month', 'year', 'all'. Engagement signals (upvote ratio, comment count, awards) indicate community consensus strength. For factual/encyclopedic knowledge prefer wikipedia. For current news prefer news_tool. Reddit excels at: real user experiences, product comparisons, niche expertise, community consensus, troubleshooting threads, subjective recommendations.",
   "category": "research",
   "icon": "fa-brands fa-reddit",
   "trigger": {
@@ -25,7 +25,7 @@
       "type": "string",
       "required": false,
       "default": "relevance",
-      "description": "Sort order: 'relevance' (default), 'hot', 'top', 'new', 'comments'"
+      "description": "Sort order: 'relevance' (default), 'hot', 'top', 'new'"
     },
     "time_filter": {
       "type": "string",
